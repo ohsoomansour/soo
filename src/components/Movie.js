@@ -4,20 +4,24 @@
 /*'http://localhost:3000/' Home component 보여줌>'http://localhost:3000/movies/123' Detail component를 보여줌 */   
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import styles from "./Movie.module.css";
 function Movie({id, coverImg, title, summary, genres }) {
   /* a href="/movie"문제점: '페이지 전체'가 다시 실행(새로고침) > 해결: Link to="/movie"  */
   return (  
-  <div >
-    <img src={coverImg} alt={title}/>
-    <h2>
-      <Link to={`/movie/${id}`}>{title}</Link>
-    </h2>
-    <p>{summary}</p>
-    <ul>
-      {genres.map((g) => (
-      <li key={g}>{g}</li>
-      ))}
-    </ul>
+  <div className={styles.movie}>
+    <img src={coverImg} alt={title} className={styles.movie__img}/>
+    <div>
+      <h2 className={styles.movie__title}>
+        <Link to={`/movie/${id}`}>{title}</Link>
+      </h2>
+      <h3 className={styles.movie__year}>{year}</h3>
+      <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
+      <ul className={styles.movie__genres}>
+        {genres.map((g) => (
+        <li key={g}>{g}</li>
+        ))}  
+      </ul>
+    </div>
   </div>
   );
 }
