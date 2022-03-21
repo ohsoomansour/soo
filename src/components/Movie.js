@@ -5,7 +5,7 @@
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styles from "./Movie.module.css";
-function Movie({id, coverImg, title, summary, genres }) {
+function Movie({id, coverImg, title, year, summary, genres }) {
   /* a href="/movie"문제점: '페이지 전체'가 다시 실행(새로고침) > 해결: Link to="/movie"  */
   return (  
   <div className={styles.movie}>
